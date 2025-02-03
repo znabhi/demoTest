@@ -18,56 +18,32 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve frontend files
-app.use(express.static("frontend"));
-
-console.log("DB_USER:", DB_USER);
-console.log("DB_PASSWORD:", DB_PASSWORD);
-console.log("DB_HOST:", DB_HOST);
-console.log("DB_NAME:", DB_NAME);
-
-// Database Connection
-// const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-//   host: DB_HOST,
-//   dialect: "postgres",
-// });
-// console.log(sequelize);
-
-// sequelize
-//   .sync()
-//   .then(() => {
-//     console.log("Database synchronized.");
-//   })
-//   .catch((error) => {
-//     console.error("Error syncing database:", error);
-//   });
-
-// Test the database connection
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("Database connection has been established successfully.");
-//   })
-//   .catch((error) => {
-//     console.error("Unable to connect to the database:", error);
-//   });
+// Serve frontend files (make sure 'frontend' folder is in the correct location)
+app.use("/faqs", express.static("frontend"));
 
 // Routes
 app.use("/api/v1/faqs", faqRoutes);
 
-app.get("/config", (req, res) => {
-  res.json({ API_BASE_URL });
+app.use("/", (req, res) => {
+  res.send("everything is ok");
 });
 
-// Export the app for testing
-module.exports = app;
-
-app.use("/admin", (req, res) => {
-  res.send("hellow");
-});
-// Start server only if NOT in test mode
-// if (process.env.NODE_ENV !== "test") {
+// Server start
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-// }
+
+// Optional: Sequelize database connection (if you're using Sequelize)
+// const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+//   host: DB_HOST,
+//   dialect: "postgres", // or 'postgres', 'sqlite', 'mssql' depending on your DB
+// });
+
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log("Database connection established successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Unable to connect to the database:", err);
+//   });
