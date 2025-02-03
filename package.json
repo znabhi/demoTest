@@ -1,0 +1,44 @@
+{
+  "name": "faq-management",
+  "version": "1.0.0",
+  "description": "This is a backend application for managing FAQs (Frequently Asked Questions). The application supports multiple languages, WYSIWYG formatting for answers, caching, and integrates with Google Translate for automatic translations.",
+  "main": "index.js",
+  "dependencies": {
+    "@sequelize/postgres": "^7.0.0-alpha.44",
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "daemon": "^1.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "google-translate-api": "^2.3.0",
+    "init": "^0.1.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "quill": "^2.0.3",
+    "react-quill": "^2.0.0",
+    "remove": "^0.1.5",
+    "sequelize": "^6.37.5",
+    "supertest": "^7.0.0",
+    "tslib": "^2.8.1"
+  },
+  "jest": {
+    "testMatch": [
+      "**/utils/**/*.test.js",
+      "**/utils/**/*-test.js"
+    ]
+  },
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.19.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "sequelize-cli": "^6.6.2"
+  }
+}
