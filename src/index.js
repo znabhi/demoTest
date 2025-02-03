@@ -62,13 +62,12 @@ app.get("/config", (req, res) => {
 // Export the app for testing
 module.exports = app;
 
+app.use("/admin", (req, res) => {
+  res.send("hellow");
+});
 // Start server only if NOT in test mode
-if (process.env.NODE_ENV !== "test") {
-  app.use("/admin", (req, res) => {
-    res.send("hellow");
-  });
-
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+// if (process.env.NODE_ENV !== "test") {
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+// }
